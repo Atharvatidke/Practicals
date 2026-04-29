@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+
+        form {
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Please Fill the form</h1>
+    <form id="userForm">
+        <label for="name"><strong>Name:</strong></label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email"><strong>Email:</strong></label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <p>
+            <strong>Gender:</strong>
+            <label for="genderMale">Male</label>
+            <input type="radio" id="genderMale" name="gender" value="Male">
+            <label for="genderFemale">Female</label>
+            <input type="radio" id="genderFemale" name="gender" value="Female">
+        </p>
+
+        <label for="DOB"><strong>Date of Birth:</strong></label>
+        <input type="date" id="DOB" name="DOB"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+
+</html>

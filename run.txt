@@ -1,0 +1,10 @@
+sudo /opt/lamp/lamp start
+
+cd /opt/lamp/htdocs
+
+sudo nano file_name.php (file creation)
+
+http://localhost/test.php
+
+
+

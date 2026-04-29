@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyprStore - E-commerce</title>
+    <link rel="stylesheet" href="third.css">
+</head>
+<body>
+    <header>
+        <div class="logo">HyprStore</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to HyprStore</h1>
+            <p>Get the best deals on electronics and clothing!</p>
+            <button class="cta-btn">Shop Now</button>
+        </section>
+
+        <section id="products" class="product-section">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="placeholder-img">Img</div>
+                    <h3>Wireless Headphones</h3>
+                    <p class="price">$49.99</p>
+                    <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="placeholder-img">Img</div>
+                    <h3>Smart Watch</h3>
+                    <p class="price">$89.99</p>
+                    <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="placeholder-img">Img</div>
+                    <h3>Running Shoes</h3>
+                    <p class="price">$59.99</p>
+                    <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                </div>
+                <div class="product-card unfinished">
+                    <div class="placeholder-img">Img</div>
+                    <h3>Basic T-Shirt</h3>
+                    <p class="price">$15.00</p>
+                    <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 HyprStore. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Terms</a> | <a href="#">Privacy</a>
+        </div>
+    </footer>
+
+    <script>
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
+            alert("Item added to cart!");
+        }
+    </script>
+</body>
+</html>
+<!-- Style
+    nav menu
+    hover
+    ul
+    hyperlink -->

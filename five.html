@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        #calculator {
+            max-width: 260px;
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px solid #333;
+        }
+
+        #display {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        #buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+
+        button {
+            padding: 15px 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Calculator</h1>
+
+        <section id="calculator" aria-label="Simple calculator">
+            <input
+                type="text"
+                id="display"
+                value="0"
+                readonly
+                aria-label="Calculator display"
+            />
+
+            <div id="buttons">
+                <button type="button" class="btn action" data-value="AC">AC</button>
+                <button type="button" class="btn action" data-value="DEL">DEL</button>
+                <button type="button" class="btn operator" data-value="%">%</button>
+                <button type="button" class="btn operator" data-value="/">÷</button>
+
+                <button type="button" class="btn number" data-value="7">7</button>
+                <button type="button" class="btn number" data-value="8">8</button>
+                <button type="button" class="btn number" data-value="9">9</button>
+                <button type="button" class="btn operator" data-value="*">×</button>  
+
+                <button type="button" class="btn number" data-value="4">4</button>
+                <button type="button" class="btn number" data-value="5">5</button>
+                <button type="button" class="btn number" data-value="6">6</button>
+                <button type="button" class="btn operator" data-value="-">-</button>
+
+                <button type="button" class="btn number" data-value="1">1</button>
+                <button type="button" class="btn number" data-value="2">2</button>
+                <button type="button" class="btn number" data-value="3">3</button>
+                <button type="button" class="btn operator" data-value="+">+</button>
+
+                <button type="button" class="btn number" data-value="00">00</button>
+                <button type="button" class="btn number" data-value="0">0</button>
+                <button type="button" class="btn number" data-value=".">.</button>
+                <button type="button" class="btn equals" data-value="=">=</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let currentInput = "0";
+        let firstValue = null;
+        let operator = null;
+        let shouldResetDisplay = false;
+
+        const display = document.getElementById("display");
+        const buttons = document.querySelectorAll("#buttons button");
+
+        initializeCalculator();
+
+        function initializeCalculator() {
+            buttons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const value = button.dataset.value;
+                    handleButtonClick(value);
+                    updateDisplay();
+                });
+            });
+
+            updateDisplay();
+        }
+
+        function handleButtonClick(value) {
+            switch (value) {
+                case "AC":
+                    clearAll();
+                    break;
+                case "DEL":
+                    deleteLast();
+                    break;
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                case "%":
+                    chooseOperator(value);
+                    break;
+                case "=":
+                    calculateResult();
+                    break;
+                case ".":
+                    appendDecimal();
+                    break;
+                default:
+                    appendNumber(value);
+                    break;
+            }
+        }
+
+        function clearAll() {
+            currentInput = "0";
+            firstValue = null;
+            operator = null;
+            shouldResetDisplay = false;
+        }
+
+        function deleteLast() {
+            // TODO: remove last character from currentInput safely
+            if(shouldResetDisplay === true){
+                currentInput = "0";
+                shouldResetDisplay = false;
+            }
+            else{
+                if(currentInput === null || currentInput === '-' || currentInput.length === 1){
+                    currentInput = '0';
+                }
+                else{
+                    currentInput = currentInput.slice(0,-1);
+                }
+            }
+        }
+
+        function appendNumber(value) {
+            // TODO: append number 00 to currentInput
+            // TODO: handle reset display state
+
+            if(shouldResetDisplay === true){
+                currentInput = value;
+                shouldResetDisplay = false;
+            }
+            else if(currentInput === '0' && value !== "." && value !== '00'){
+                currentInput = value;
+            }
+            else if(value === '00' && currentInput === '0'){
+                currentInput = '0';
+            }
+            else{
+                if(currentInput.length <= 7){
+                    currentInput += value;
+                }
+            }
+        }
+
+        function appendDecimal() {
+            // TODO: add decimal point only if not already present
+            if(shouldResetDisplay === true){
+                currentInput = '0.';
+                shouldResetDisplay = false;
+            }
+            else if(!currentInput.includes('.')){
+                currentInput += '.';
+            }
+        }
+
+        function chooseOperator(nextOperator) {
+            // TODO: store firstValue
+            // TODO: set operator
+            // TODO: prepare for second input
+            if(operator && shouldResetDisplay === false){
+                let result = operate((parseFloat(firstValue)),parseFloat(currentInput),operator);
+                firstValue = String(result);
+                currentInput = firstValue;
+                
+            }
+            else{
+                firstValue = currentInput;
+            }
+
+            operator = nextOperator;
+            shouldResetDisplay = true;
+        }
+
+        function calculateResult() {
+            // TODO: parse firstValue/currentInput
+            // TODO: call operate()
+            // TODO: set currentInput to result
+            // TODO: clear operator state
+
+            if(operator === null){
+                return;
+            }
+            let a = parseFloat(firstValue);
+            let b = parseFloat(currentInput);
+
+            if(operator === '/' && b === 0){
+                currentInput = 'Error';
+                operator = null;
+                firstValue = null;
+                shouldResetDisplay = true;
+            }
+            else{
+                let result = operate(a,b,operator);
+                let s = String(result);
+
+                s = s.slice(0,15);
+                currentInput = s;
+
+                currentInput = result;
+                firstValue = null;
+                operator = null;
+                shouldResetDisplay = true;
+            }
+
+        }
+
+        function operate(a, b, op) {
+            switch (op) {
+                case "+":
+                    return a + b;
+                case "-":
+                    return a - b;
+                case "*":
+                    return a * b;
+                case "/":
+                    return a / b;
+                case "%":
+                    return a % b;
+                default:
+                    return b;
+            }
+        }
+
+        function updateDisplay() {
+            display.value = currentInput;
+        }
+    </script>
+</body>
+</html>

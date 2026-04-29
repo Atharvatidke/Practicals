@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Grid and Components</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <div class="bg-light p-5 rounded-lg m-3 border">
+        <div class="container text-center">
+            <h1 class="display-5">Responsive Design with Bootstrap</h1>
+            <p class="lead">Demonstrating the use of Bootstrap Grid and Components for responsive web design.</p>
+            <button class="btn btn-primary">Learn More</button>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Features Section (Grid)</h2>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Responsive Grid</h5>
+                        <p class="card-text">Bootstrap's grid system uses a series of containers, rows, and columns to
+                            layout and align content. It is built with flexbox and is fully responsive.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">Predefined Components</h5>
+                        <p class="card-text">Bootstrap provides numerous reusable components like Navbars, Cards, and
+                            Buttons to build professional websites quickly and easily.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-info">
+                    <div class="card-body">
+                        <h5 class="card-title text-info">Mobile First</h5>
+                        <p class="card-text">Bootstrap includes a responsive, mobile-first fluid grid system that
+                            appropriately scales up to 12 columns as the device size increases.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Topic Overview</h3>
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Topic</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Grid System</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Components</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Responsiveness</td>
+                            <td>Completed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h3>Contact Form</h3>
+                <form class="border p-3 rounded">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Student Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email ID:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Submit Information</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2026 Lab Assignment | Submitted by: Atharva Tidke</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Manipulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            background-color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        .result-label {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>PHP String Manipulation</h1>
+    
+    <label>Enter String:</label><br>
+    <input type="text" id="inputString" value="Hello World" /><br>
+    <button onclick="performOperations()">Check</button>
+    
+    <div id="resultsSection" style="display:none;">
+        <h2>Results:</h2>
+        
+        <div class="result">
+            <span class="result-label">strlen() - Length:</span>
+            <span id="lengthResult"></span>
+        </div>
+        
+        <div class="result">
+            <span class="result-label">strrev() - Reversed:</span>
+            <span id="reverseResult"></span>
+        </div>
+        
+        <div class="result">
+            <span class="result-label">substr(0, 5) - First 5:</span>
+            <span id="substringResult1"></span>
+        </div>
+        
+        <div class="result">
+            <span class="result-label">substr(6) - From pos 6:</span>
+            <span id="substringResult2"></span>
+        </div>
+        
+        <div class="result">
+            <span class="result-label">strtoupper() - Uppercase:</span>
+            <span id="uppercaseResult"></span>
+        </div>
+        
+        <div class="result">
+            <span class="result-label">strtolower() - Lowercase:</span>
+            <span id="lowercaseResult"></span>
+        </div>
+    </div>
+    
+    <script>
+        function performOperations() {
+            const str = document.getElementById('inputString').value;
+            
+            // Simulate PHP string functions
+            document.getElementById('lengthResult').textContent = str.length;
+            document.getElementById('reverseResult').textContent = str.split('').reverse().join('');
+            document.getElementById('substringResult1').textContent = str.substring(0, 5);
+            document.getElementById('substringResult2').textContent = str.substring(6);
+            document.getElementById('uppercaseResult').textContent = str.toUpperCase();
+            document.getElementById('lowercaseResult').textContent = str.toLowerCase();
+            
+            document.getElementById('resultsSection').style.display = 'block';
+        }
+        
+        window.addEventListener('load', () => {
+            performOperations();
+        });
+    </script>
+</body>
+</html>

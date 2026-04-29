@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    
+    <h1 id="mainTitle">Please Fill the form</h1>
+    <form id="userForm">
+
+        <label for="name"><strong>Name:</strong></label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email"><strong>Email:</strong></label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <p><strong>Gender:</strong>
+        <label for="genderMale">Male</label>
+        <input type="radio" id="genderMale" name="gender" value="Male">
+        <label for="genderFemale">Female</label>
+        <input type="radio" id="genderFemale" name="gender" value="Female">
+        </p>
+
+        <label for="DOB"><Strong>Date of Birth:</Strong></label>
+        <input type="date" id="DOB" name="DOB"><br><br>
+
+            <input type="submit" value="Submit">
+    </form>
+
+    <hr>
+    <h2>Live Preview</h2>
+    <p id="previewText">Start typing in the form to see dynamic content.</p>
+
+    <h2>Submission Status</h2>
+    <p id="statusText">Form not submitted yet.</p>
+
+    <div id="secretPanel" style="display: none; margin-top: 12px;">
+        <label for="secretMode"><strong>Secret Mode:</strong></label>
+        <input type="checkbox" id="secretMode" name="secretMode">
+        <span>Turbo rainbow mode</span>
+    </div>
+
+    <script>
+        const form = document.getElementById('userForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const dobInput = document.getElementById('DOB');
+        const genderInputs = document.querySelectorAll('input[name="gender"]');
+        const previewText = document.getElementById('previewText');
+        const statusText = document.getElementById('statusText');
+        const mainTitle = document.getElementById('mainTitle');
+        const secretPanel = document.getElementById('secretPanel');
+        const secretMode = document.getElementById('secretMode');
+
+        let hue = 0;
+        let colorSpeed = 0.18;
+
+        function animateBackground() {
+            hue = (hue + colorSpeed) % 360;
+            document.body.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+            requestAnimationFrame(animateBackground);
+        }
+
+        function applySecretMode() {
+            if (secretMode.checked) {
+                colorSpeed = 1.2;
+                statusText.textContent = 'Secret turbo rainbow mode enabled.';
+            } else {
+                colorSpeed = 0.18;
+                statusText.textContent = 'Secret turbo rainbow mode disabled.';
+            }
+        }
+
+        function getSelectedGender() {
+            const selected = document.querySelector('input[name="gender"]:checked');
+            return selected ? selected.value : 'Not selected';
+        }
+
+        function updatePreview() {
+            const name = nameInput.value.trim() || 'Anonymous';
+            const email = emailInput.value.trim() || 'No email entered';
+            const dob = dobInput.value || 'Not selected';
+            const gender = getSelectedGender();
+
+            previewText.textContent =
+                `Name: ${name} | Email: ${email} | Gender: ${gender} | DOB: ${dob}`;
+        }
+
+        nameInput.addEventListener('input', updatePreview);
+        emailInput.addEventListener('input', updatePreview);
+        dobInput.addEventListener('change', updatePreview);
+        genderInputs.forEach((input) => input.addEventListener('change', updatePreview));
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            updatePreview();
+            statusText.textContent =
+                `Form submitted successfully at ${new Date().toLocaleTimeString()}.`;
+        });
+
+        mainTitle.addEventListener('dblclick', function () {
+            secretPanel.style.display =
+                secretPanel.style.display === 'none' ? 'block' : 'none';
+        });
+
+        secretMode.addEventListener('change', applySecretMode);
+
+        updatePreview();
+        animateBackground();
+    </script>
+
+</body>
+</html>

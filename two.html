@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: transparent !important;
+            position: relative;
+            overflow: hidden;
+            }
+        
+        .bg-video {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                width: 100vw;
+                height: 56.25vw;
+                min-height: 100vh;
+                min-width: 177.77vh; 
+                transform: translate(-50%, -50%);
+                z-index: -1;
+                pointer-events: none;
+            }
+
+        body {
+            background-color: #f4f6f8;
+            color: #222;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 28px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(16,24,40,0.06);
+        }
+
+        h2 {
+            color: #0b3d91;
+            margin-top: 12px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ccd6df;
+        }
+
+        td, th {
+            padding: 10px 12px;
+            vertical-align: top;
+            border: 1px solid #e6eef6;
+            color: #17202a;
+        }
+
+        .nested-table td {
+            padding: 6px 8px;
+            border-color: #f0f4f8;
+        }
+    </style>
+</head>
+<body>
+    <iframe class="bg-video" src="https://player.vimeo.com/video/277440304?background=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <div class="container">
+    <p style="color: #d46a07; font-size: 18px;"></p>
+
+    <div class="quick-links">
+        <a href="https://www.isquareit.edu.in/" target="_blank">International Institute of Information Technology, Pune</a>
+    </div>
+
+    <div class="logo-wrap">
+        <a href="https://www.isquareit.edu.in/" target="_blank" style="display:inline-block;">
+            <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYXysnXjLAHDBh4JBSleV737J1kEC9IhTpcg&s" alt="I2IT LOGO" style="box-shadow:0 2px 6px rgba(11,61,145,0.12); border:1px solid #dfeaf6;">
+        </a>
+    </div>
+
+    <h2>Main Header</h2>
+    <p><b>Nested Table</b></p>
+    <table border="2" style="border-color:#b8d0e6;">
+        <tr>
+            <td style="font-weight:600; color:#0b3d91;">Department Overview</td>
+            <td> B.E. Intake Summary - AY 2026
+                <table class="nested-table" border="1" style="background:#fbfcff;">
+                    <tr>
+                        <td>Computer Engineering</td>
+                        <td>180 Seats</td>
+                    </tr>
+                    <tr>
+                        <td>Information Technology</td>
+                        <td>120 Seats</td>
+                    </tr>
+                    <tr>
+                        <td>Electronics & Telecommunication</td>
+                        <td>60 Seats</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Admission Office</td>
+            <td>Mon - Fri, 10:00 AM to 4:00 PM</td>
+        </tr>
+    </table>
+    </div>
+    <footer style="z-index:1;">
+        <p>&copy; Atharva Tidke.</p>
+    </footer>
+</body>
+</html>
