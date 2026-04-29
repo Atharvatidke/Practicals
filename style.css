@@ -1,0 +1,126 @@
+.container {
+    border: 1px solid #d9e3ee;
+}
+
+.quick-links {
+    text-align: center;
+    margin: 8px 0 4px;
+}
+
+.logo-wrap {
+    text-align: center;
+    margin: 8px 0 14px;
+}
+
+a {
+    color: #0b63ce;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a:hover {
+    text-decoration: none;
+    background-color: #eaf3ff;
+    color: #084a99;
+}
+
+a:focus {
+    outline: 2px dashed #8fb3ff;
+    outline-offset: 2px;
+}
+
+img {
+    margin-top: 8px;
+    border: 2px solid #dcdcdc;
+    border-radius: 8px;
+}
+
+.logo {
+    max-width: 130px;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 8px;
+}
+
+h2 {
+    letter-spacing: 0.3px;
+    border-left: 4px solid #0b3d91;
+    padding-left: 10px;
+}
+
+.container table {
+    margin-top: 8px;
+    box-shadow: 0 2px 8px rgba(11, 61, 145, 0.06);
+}
+
+.container td,
+.container th {
+    line-height: 1.4;
+}
+
+.nested-table td {
+    font-size: 14px;
+}
+
+.nested-table tr td:first-child {
+    font-weight: 600;
+    width: 65%;
+}
+/*
+Documentation: CSS properties and focus pseudo-classes
+
+border-collapse
+- Purpose:
+    Controls how table cell borders are rendered: either separated (each cell draws its own border) or collapsed (adjacent borders are merged).
+- Values:
+    - separate (default): cells keep distinct borders; use border-spacing to set gaps.
+    - collapse: adjacent cell borders collapse into a single border; border-spacing has no effect.
+- Notes:
+    - In collapse mode, border conflict resolution chooses which border is shown based on border-style, border-width, and source (user/author/UA). Thick/solid borders tend to win over thin/hidden.
+    - Use border-collapse: separate with border-spacing to create visual gutters between cells.
+    - Be aware of differences in background painting and border corner behavior between the two modes.
+
+box-shadow
+- Purpose:
+    Adds drop shadows (and inner shadows) to elements without additional DOM.
+- Syntax:
+    box-shadow: [inset?] <offset-x> <offset-y> [<blur-radius>?] [<spread-radius>?] [<color>?], ...;
+    - offset-x, offset-y: required (can be negative)
+    - blur-radius: optional, defaults to 0 (larger = softer)
+    - spread-radius: optional, expands (+) or contracts (-) the shadow
+    - color: optional, defaults to current color (use rgba for translucency)
+    - inset: makes the shadow draw inside the element
+    - multiple shadows: comma-separated (first drawn on top)
+- Notes & tips:
+    - Prefer small blur and spread values for performance; large, animated shadows can be expensive.
+    - Use rgba() or hsla() to control shadow opacity.
+    - Combine with transform for hardware-accelerated effects when animating.
+    - box-shadow does not affect layout (non-invasive), but may increase repaints.
+
+:focus and related pseudo-classes
+- :focus
+    - Matches an element that has keyboard or programmatic focus (e.g., clicked or tabbed into).
+    - Common on interactive elements: a, button, input, textarea; can be applied to any element with tabindex.
+    - Do not remove focus outlines without providing an accessible replacement.
+- :focus-visible
+    - More selective: intended to show focus indicators only when they are helpful (e.g., keyboard navigation).
+    - Use to avoid showing outlines on mouse click while preserving keyboard focus cues.
+- :focus-within
+    - Matches an element if it or any descendant has focus. Useful for styling a container when a child is focused.
+- Accessibility recommendations:
+    - Always provide a visible focus indicator (outline, box-shadow, or border) for keyboard users.
+    - If customizing outlines, ensure contrast and size make the focus state obvious.
+    - Use tabindex="0" to make custom controls keyboard-focusable; avoid tabindex>0.
+    - Test focus behavior with keyboard only and assistive technologies.
+
+Examples (conceptual)
+- Use collapse for seamless table borders; use separate + border-spacing for spaced cells.
+- Use box-shadow for subtle elevation; use inset for inner depth.
+- Use :focus-visible to show keyboard-focused styles while keeping mouse interactions clean.
+
+*/
