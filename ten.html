@@ -4,30 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .gender-label {
+            display: inline;
+            margin-left: 15px;
+            margin-top: 0;
+            font-weight: normal;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #999;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+            margin-left: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+
+        p {
+    
+            background: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 2px solid #ccc;
+        }
+    </style>
 </head>
 
 <body>
     
-    <h1 id="mainTitle">Please Fill the form</h1>
+    <h1>Please Fill the form</h1>
     <form id="userForm">
-
-        <label for="name"><strong>Name:</strong></label>
+        <label for="name">Name:</label>
         <input type="text" id="name" name="name"><br><br>
 
-        <label for="email"><strong>Email:</strong></label>
+        <label for="email">Email:</label>
         <input type="email" id="email" name="email"><br><br>
 
-        <p><strong>Gender:</strong>
-        <label for="genderMale">Male</label>
+        <label>Gender:</label>
+        <label for="genderMale" class="gender-label">Male</label>
         <input type="radio" id="genderMale" name="gender" value="Male">
-        <label for="genderFemale">Female</label>
-        <input type="radio" id="genderFemale" name="gender" value="Female">
-        </p>
+        <label for="genderFemale" class="gender-label">Female</label>
+        <input type="radio" id="genderFemale" name="gender" value="Female"><br><br>
 
-        <label for="DOB"><Strong>Date of Birth:</Strong></label>
+        <label for="DOB">Date of Birth:</label>
         <input type="date" id="DOB" name="DOB"><br><br>
 
-            <input type="submit" value="Submit">
+        <input type="submit" value="Submit">
     </form>
 
     <hr>
@@ -37,12 +121,6 @@
     <h2>Submission Status</h2>
     <p id="statusText">Form not submitted yet.</p>
 
-    <div id="secretPanel" style="display: none; margin-top: 12px;">
-        <label for="secretMode"><strong>Secret Mode:</strong></label>
-        <input type="checkbox" id="secretMode" name="secretMode">
-        <span>Turbo rainbow mode</span>
-    </div>
-
     <script>
         const form = document.getElementById('userForm');
         const nameInput = document.getElementById('name');
@@ -51,28 +129,6 @@
         const genderInputs = document.querySelectorAll('input[name="gender"]');
         const previewText = document.getElementById('previewText');
         const statusText = document.getElementById('statusText');
-        const mainTitle = document.getElementById('mainTitle');
-        const secretPanel = document.getElementById('secretPanel');
-        const secretMode = document.getElementById('secretMode');
-
-        let hue = 0;
-        let colorSpeed = 0.18;
-
-        function animateBackground() {
-            hue = (hue + colorSpeed) % 360;
-            document.body.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-            requestAnimationFrame(animateBackground);
-        }
-
-        function applySecretMode() {
-            if (secretMode.checked) {
-                colorSpeed = 1.2;
-                statusText.textContent = 'Secret turbo rainbow mode enabled.';
-            } else {
-                colorSpeed = 0.18;
-                statusText.textContent = 'Secret turbo rainbow mode disabled.';
-            }
-        }
 
         function getSelectedGender() {
             const selected = document.querySelector('input[name="gender"]:checked');
@@ -97,20 +153,9 @@
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             updatePreview();
-            statusText.textContent =
-                `Form submitted successfully at ${new Date().toLocaleTimeString()}.`;
+            statusText.textContent = 'Form submitted successfully!';
         });
-
-        mainTitle.addEventListener('dblclick', function () {
-            secretPanel.style.display =
-                secretPanel.style.display === 'none' ? 'block' : 'none';
-        });
-
-        secretMode.addEventListener('change', applySecretMode);
-
-        updatePreview();
-        animateBackground();
     </script>
-
 </body>
 </html>
+
