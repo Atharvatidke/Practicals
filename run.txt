@@ -1,4 +1,4 @@
-sudo /opt/lamp/lamp start
+sudo /opt/lampp/lampp start
 
 cd /opt/lamp/htdocs
 
